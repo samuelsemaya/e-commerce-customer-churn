@@ -1,5 +1,5 @@
-<div style='text-align: center'>
-<img src='e-commerce_churn.png' alt='e-commerce_churn' style='width:600px; height:500px'>
+<div align="center">
+  <img src="https://github.com/samuelsemaya/e-commerce-customer-churn/blob/main/e-commerce-customer-churn/e-commerce_churn.png?raw=true" alt="e-commerce-churn" style="width:600px; height:500px">
 </div>
 
 ## Context
