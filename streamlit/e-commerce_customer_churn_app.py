@@ -9,68 +9,16 @@ import plotly.express as px
 # Page config - This must be the first Streamlit command
 st.set_page_config(page_title="ShopWise Churn Predictor", layout="wide", initial_sidebar_state="expanded")
 
-# Function to set color scheme based on mode
-def set_color_scheme(is_dark_mode):
-    if is_dark_mode:
-        return {
-            'text_color': '#FAFAFA',
-            'input_bg': '#262730',
-            'button_bg': '#4CAF50',
-            'button_text': '#0E1117',
-            'gauge_steps': ['#1E5631', '#FFA500', '#8B0000'],
-            'pie_colors': ['#1E5631', '#8B0000']
-        }
-    else:
-        return {
-            'text_color': '#000000',
-            'input_bg': '#F0F2F6',
-            'button_bg': '#4CAF50',
-            'button_text': '#FFFFFF',
-            'gauge_steps': ['#90EE90', '#FFA500', '#FF6347'],
-            'pie_colors': ['#90EE90', '#FF6347']
-        }
+# Model and System
+MAIN_PATH = os.path.abspath(os.getcwd())
+PATH_MODEL = os.path.join(MAIN_PATH, "final_model.sav")
+lgbm = pickle.load(open(PATH_MODEL, 'rb'))
 
 # Sidebar
 with st.sidebar:
     st.image("logo_shopwise.png", width=200)
     st.title("Navigation")
     page = st.radio("", ["🏠 Home", "🔮 Predict", "ℹ️ About"])
-    
-    # Mode toggle
-    is_dark_mode = st.toggle("Dark Mode", value=False)
-
-# Set color scheme
-colors = set_color_scheme(is_dark_mode)
-
-# Apply selected theme
-st.markdown(f"""
-<style>
-    .Widget>label {{
-        color: {colors['text_color']};
-    }}
-    .stTextInput>div>div>input {{
-        background-color: {colors['input_bg']};
-        color: {colors['text_color']};
-    }}
-    .stSelectbox>div>div>select {{
-        background-color: {colors['input_bg']};
-        color: {colors['text_color']};
-    }}
-    .stSlider>div>div>div>div {{
-        background-color: {colors['button_bg']};
-    }}
-    .stButton>button {{
-        color: {colors['button_text']};
-        background-color: {colors['button_bg']};
-        border-radius: 5px;
-    }}
-</style>
-""", unsafe_allow_html=True)
-
-# Model and System
-MAIN_PATH = os.path.abspath(os.getcwd())
-PATH_MODEL = os.path.join(MAIN_PATH, "final_model.sav")
-lgbm = pickle.load(open(PATH_MODEL, 'rb'))
 
 # Home page
 if page == "🏠 Home":
@@ -141,16 +89,15 @@ elif page == "🔮 Predict":
             fig.add_trace(go.Indicator(
                 mode = "gauge+number",
                 value = churn_prob,
-                title = {'text': "Churn Probability", 'font': {'color': colors['text_color']}},
+                title = {'text': "Churn Probability"},
                 gauge = {
-                    'axis': {'range': [None, 1], 'tickwidth': 1, 'tickcolor': colors['text_color']},
-                    'bar': {'color': colors['button_bg']},
+                    'axis': {'range': [None, 1], 'tickwidth': 1},
+                    'bar': {'color': "#4CAF50"},
                     'steps' : [
-                        {'range': [0, 0.5], 'color': colors['gauge_steps'][0]},
-                        {'range': [0.5, 0.7], 'color': colors['gauge_steps'][1]},
-                        {'range': [0.7, 1], 'color': colors['gauge_steps'][2]}],
-                    'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 0.7}},
-                number = {'font': {'color': colors['text_color']}}
+                        {'range': [0, 0.5], 'color': "#90EE90"},
+                        {'range': [0.5, 0.7], 'color': "#FFA500"},
+                        {'range': [0.7, 1], 'color': "#FF6347"}],
+                    'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 0.7}}
             ), row=1, col=1)
 
             # Donut chart
@@ -158,12 +105,11 @@ elif page == "🔮 Predict":
                 labels=['Retention', 'Churn'],
                 values=[1-churn_prob, churn_prob],
                 hole=.3,
-                marker_colors=colors['pie_colors'],
-                textinfo='label+percent',
-                textfont={'color': colors['text_color']}
+                marker_colors=['#90EE90', '#FF6347'],
+                textinfo='label+percent'
             ), row=1, col=2)
 
-            fig.update_layout(height=500, width=1000, paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
+            fig.update_layout(height=500, width=1000)
             st.plotly_chart(fig)
 
             if churn_prob > 0.7:
