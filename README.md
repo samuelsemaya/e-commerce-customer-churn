@@ -2,9 +2,10 @@
   <img src="https://github.com/samuelsemaya/e-commerce-customer-churn/blob/main/e-commerce-customer-churn/e-commerce_churn.png?raw=true" alt="e-commerce-churn" style="width:600px; height:500px">
 </div>
 
-## Context
+# 1. Business Understanding
 ---
-
+> ## 1.1 Context
+---
 <div style='text-align: justify'>
 ShopWise is an e-commerce startup based in Indonesia, founded in 2018. The company offers a wide range of products, including electronics, fashion, household goods, and groceries. Since its inception, ShopWise has shown rapid growth, reaching 5 million monthly active users by 2023.  
 <br><br>
@@ -20,46 +21,46 @@ To address this issue, ShopWise plans to develop a churn prediction model that c
 [2] Smith, A. & Johnson, B. (2023). "The Impact of Personalization on E-commerce Customer Loyalty". International Journal of E-Business Research, 18(2), 112-128.<br>  
 [3] Brown, L. (2021). "Predictive Analytics in E-commerce: A Comprehensive Guide". New York: Tech Publishing House.
 
-## Problem Hypotesis
+> ## 1.2 Problem Hypotesis
 ---
-
 <div style='text-align: justify'>
 
 The main problem lies in ShopWise's inability to differentiate between customers who are potential churners and those who are loyal. As a result, promotions are given indiscriminately, both to customers who are likely to leave the platform (churn) and those who already have a high level of loyalty. This not only leads to a waste of resources on customers who don't actually need additional incentives, but also reduces the effectiveness of retention efforts towards customers at risk of churning.
 
 </div>
 
-## Main Stakeholder
+> ## 1.3 Main Stakeholder
 ---
-
 <div style='text-align: justify'>
-The primary stakeholder for this project is the <b>Head of Customer Retention and Marketing Analytics</b>. This position is suitable as the main stakeholder because:<br>
+The primary stakeholder for this project is the <b>Head of Customer Experience and Marketing Optimization</b>. This position is suitable as the main stakeholder because:
 
-1. Directly responsible for customer retention efforts and customer behavior analysis.
+1. <b>Comprehensive oversight</b>: This role manages customer retention efforts, customer behavior analysis, and marketing budget allocation, providing a holistic view of customer-centric strategies.
 
-2. Has a vested interest in understanding the factors that cause churn and developing strategies to reduce it.
+2. <b>Strategic alignment</b>: The position ensures that customer experience initiatives and marketing activities are in sync with broader business objectives.
 
-3. Can use the model's prediction results to design targeted marketing campaigns and loyalty programs.
+3. <b>Data-driven decision making</b>: With access to customer behavior analytics, this stakeholder can make informed choices about retention strategies and budget optimization.
 
-4. Has the authority to implement recommendations based on insights from the model.
+4. <b>Resource optimization</b>: By overseeing both customer experience and marketing budgets, this role can effectively balance resources between retention and acquisition efforts.
 
-5. Typically collaborates with the data science team to apply analytical solutions in business strategy.
-
-By using the churn prediction model, the team can take proactive measures to retain valuable customers before they leave the e-commerce platform.
+5. <b>Direct impact on key metrics</b>: The responsibilities of this position directly influence critical performance indicators such as customer retention rates, lifetime value, and marketing ROI.
 </div>
 
-## Goals
+> ## 1.4 Goals
 ---
-
 <div style='text-align: justify'>
 
 To address this issue, ShopWise needs to develop a more targeted strategy for offering promotions. By identifying customers who are at high risk of churning, the company can allocate marketing resources more effectively, improve customer retention, and ultimately optimize the promotional budget.
 
 </div>
 
-## Conclusion
+> ## 1.5 Analytic Approach
 ---
+<div style='text-align: justify'>
+Our analytic approach focuses on developing a predictive model to identify e-commerce customers at risk of churning. We will analyze historical customer data, perform feature engineering, and test various machine learning algorithms. The model will be optimized to maximize recall, ensuring early detection of at-risk customers. The result is a prediction system that enables the customer retention team to take proactive action, with the ultimate goal of reducing churn and increasing customer loyalty.
+</div>
 
+# 13. Conclusion & Recommendation
+---
 <div style='text-align: justify'>
 
 Best Model: **LightGBM**
@@ -77,7 +78,7 @@ Customer Acquisition Cost (CAC) is the total cost a business spends to acquire n
 
 Customer Lifetime Value (CLV) is the total amount of profit a customer brings to a company over the course of their relationship with the business.
 
-A healthy CLV:CAC ratio for e-commerce is typically around 3:1. So, it's understands that CLV is **\$ 210**
+<b>A healthy CLV:CAC ratio for e-commerce is typically around 3:1</b>. So, it's understands that CLV is **\$ 210**
 
 |Name|Price ($)|
 |:---:|:-----:|
@@ -86,7 +87,7 @@ A healthy CLV:CAC ratio for e-commerce is typically around 3:1. So, it's underst
 
 <br>
 
-<b>References:</b>  
+<b>References:</b> 
 [Reference 1](https://www.productplan.com/glossary/customer-acquisition-cost/) ; 
 [Reference 2](https://userpilot.com/blog/average-customer-acquisition-cost/) ; 
 [Reference 3](https://firstpagesage.com/reports/average-cac-for-ecommerce-companies/) ;
@@ -109,24 +110,30 @@ ShopWise only needs to provide promotions to customers predicted to churn.
 Customers predicted to churn = TP + FP = 95 + 41 = 136  
 Total cost = 136 * \$ 70 = \$ 9,520
 
-Savings:  
+<b>Savings:</b>  
 Total savings = \$ 45,780 - \$ 9,520 = \$ 36,260  
 Percentage savings = (\$ 36,260 / \$ 45,780) * 100 ≈ 79.2%
 
-Considering False Negatives:  
+<b>Considering False Negatives:</b>  
 FN = 12 customers who will actually churn but are not detected   
 Potential loss = 12 * \$ 210 (CLV) = \$ 2,520
 
-Net Savings:  
+<b>Net Savings:</b>  
 Net savings = \$ 36,260 - \$ 2,520 = \$ 33,740
 
 From a business perspective, ShopWise can observe that:  
 1. By using machine learning, ShopWise can save 79.2% of promotional costs, similar to the previous analysis, but with a higher nominal value.  
 2. Net savings have significantly increased to $33,740, demonstrating a greater positive impact from implementing the ML model.  
-3. ROI from ML implementation = (Net Savings / Promotional Cost with ML) * 100  
-   = (\$ 33,740 / \$ 9,520) * 100 ≈ 354.4%.  
+3. Total cost ML implementation = Promotional Cost with ML + Potential Loss from FN= \$ 9,520 + \$ 2,520 = \$ 12,040<br><br>
+<b>ROI</b> = (Net Savings / Total Cost of ML Implementation) * 100
+= (\$ 33,740 / \$ 12,040) * 100 ≈ 280.2%
+<br><br>
 
+<div style='text-align: justify'>
 With this exceptionally high ROI, ShopWise is in a strong position not only to improve short-term profitability but also to make strategic investments that can drive long-term business growth and sustainability. This demonstrates that the implementation of machine learning is not just a tool for operational efficiency, but also a catalyst for broader business transformation.
+</div>
+
+<br>
 
 **Feature Importance Affecting Churn**  
 From the many factors influencing customer churn, 3 main factors have been identified:
@@ -137,34 +144,62 @@ From the many factors influencing customer churn, 3 main factors have been ident
 |`Complain`|Complain is the second strongest factor influencing churn. A higher Complain value indicates customer dissatisfaction with the service, thus increasing the risk of churn. On the other hand, customers without complaints tend to be more satisfied and have a lower likelihood of churning.|
 |`NumberOfAddress`|NumberOfAddress is the third significant factor. A higher number of addresses may indicate high customer mobility or complexity in order management, potentially increasing the risk of churn. Customers with fewer addresses may have more stable purchasing patterns and a lower likelihood of churning.|
 
-## Recommendation
+> ## 13.2 Recommendation
 ---
-
-### For Business
+>> ### For Business
 ---
+#### **1. Implement a Robust Loyalty Program**
 
-<div style='text-align: justify'>
+**Key Feature: Tenure**
 
-1. **Tiered Loyalty Program**<br>
-   Implement a tiered reward system with increasing cashback, access to exclusive offers, and free shipping based on shopping frequency and value.
+Our analysis shows that "Tenure" is the most important feature in predicting customer churn. A well-designed loyalty program can significantly increase customer tenure.
 
-2. **Customer Experience Personalization**<br>
-   Enhance personalization across all touchpoints with tailored product recommendations, content, and offers based on shopping behavior data.
+- Develop a tiered loyalty program that rewards long-term customers
+- Offer exclusive benefits, early access to sales, or personalized discounts based on tenure
+- Implement a points system that encourages frequent purchases and long-term engagement
 
-3. **Customer Education and Engagement**<br>
-   Host webinars and educational content on topics relevant to ShopWise products to increase added value and strengthen brand relationships.
+#### **2. Enhance Customer Service and Complaint Resolution**
 
-4. **Omnichannel Customer Service**<br>
-   Integrate customer service across various channels with a robust CRM system to improve speed and quality of problem resolution.
+**Key Feature: Complain**
 
-5. **Continuous Feedback Program**<br>
-   Launch a "Voice of Customer" initiative for regular collection and implementation of customer feedback, demonstrating commitment to improvement based on customer input.
+The "Complain" feature is the second most important, highlighting the critical role of effective complaint handling and customer service.
 
-</div>
+- Invest in training for customer service representatives to handle complaints efficiently
+- Implement a streamlined process for quick complaint resolution
+- Regularly analyze complaint data to identify and address recurring issues
 
-### For Modeling
+#### **3. Personalize Customer Experience**
+
+**Key Features: NumberOfAddress, NumberOfDeviceRegistered**
+
+The high importance of "NumberOfAddress" and "NumberOfDeviceRegistered" suggests that personalization based on customer behavior is crucial.
+
+- Utilize data on multiple delivery addresses and devices to create tailored shopping experiences
+- Implement AI-driven product recommendations based on browsing and purchase history
+- Develop targeted marketing campaigns for different customer segments
+
+#### **4. Optimize Pricing and Cashback Strategies**
+
+**Key Feature: CashbackAmount**
+
+The significance of "CashbackAmount" indicates that financial incentives play a vital role in customer retention.
+
+- Analyze the effectiveness of current cashback offerings and adjust as needed
+- Implement dynamic pricing strategies based on customer segments and purchase history
+- Consider bundled pricing or subscription models for frequently purchased items
+
+#### **5. Improve Product Availability and Delivery Efficiency**
+
+**Key Features: DaySinceLastOrder, WarehouseToHome**
+
+The importance of "DaySinceLastOrder" and "WarehouseToHome" highlights the need for efficient inventory management and delivery processes.
+
+- Optimize inventory levels to ensure product availability and reduce stockouts
+- Improve logistics to decrease delivery times and enhance the "WarehouseToHome" experience
+- Implement predictive analytics for demand forecasting and inventory management
+
+  >> ### For Modeling
 ---
-
 <div style='text-align: justify'>
 
 1. Provide additional data information related to customer churn to further improve prediction accuracy.
